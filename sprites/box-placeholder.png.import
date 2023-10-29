@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2w3tvbutirld"
-path="res://.godot/imported/player-placeholder.png-c41fea642eef61db3d1930998a69dc04.ctex"
+uid="uid://dlkf8ebhp7wfx"
+path="res://.godot/imported/box-placeholder.png-3cda3815342cc447f1b4f34182479759.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://projects/aseprite/player-placeholder.png"
-dest_files=["res://.godot/imported/player-placeholder.png-c41fea642eef61db3d1930998a69dc04.ctex"]
+source_file="res://sprites/box-placeholder.png"
+dest_files=["res://.godot/imported/box-placeholder.png-3cda3815342cc447f1b4f34182479759.ctex"]
 
 [params]
 
