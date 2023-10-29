@@ -6,7 +6,6 @@ var game_resolution = Vector2i(320, 180)
 
 func _ready():
 	pivot_offset = 0.5 * game_resolution
-	print(pivot_offset)
 	
 	get_tree().root.connect("size_changed", _on_viewport_size_changed)
 	_on_viewport_size_changed()
