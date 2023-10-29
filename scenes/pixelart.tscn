@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtai27nx0ed7f"]
+
+[ext_resource type="Texture2D" uid="uid://d3nkcb7ad57v5" path="res://sprites/airborne.png" id="1_q8cqg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v5mom"]
+size = Vector2(118, 237)
+
+[node name="RigidBody2D" type="RigidBody2D"]
+rotation = -0.548893
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -155)
+scale = Vector2(0.464569, 0.464569)
+texture = ExtResource("1_q8cqg")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -155.5)
+shape = SubResource("RectangleShape2D_v5mom")

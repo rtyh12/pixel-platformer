@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://ehoo8k687eur"]
+
+[ext_resource type="Texture2D" uid="uid://tyc4g5f4s17h" path="res://sprites/player-placeholder.png" id="1_h71jr"]
+[ext_resource type="Texture2D" uid="uid://xuar0icnxk52" path="res://projects/aseprite/ground-placeholder.png" id="2_bvn2a"]
+
+[node name="level1" type="Node2D"]
+position = Vector2(16, 0)
+
+[node name="Player-placeholder" type="Sprite2D" parent="."]
+position = Vector2(8, 8)
+texture = ExtResource("1_h71jr")
+
+[node name="Ground-placeholder" type="Sprite2D" parent="."]
+position = Vector2(24, 24)
+texture = ExtResource("2_bvn2a")
+
+[node name="Ground-placeholder2" type="Sprite2D" parent="."]
+position = Vector2(8, 24)
+texture = ExtResource("2_bvn2a")
+
+[node name="Ground-placeholder3" type="Sprite2D" parent="."]
+position = Vector2(-8, 24)
+texture = ExtResource("2_bvn2a")
