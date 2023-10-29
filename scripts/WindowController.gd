@@ -2,7 +2,6 @@ extends Node
 
 
 func toggle_fullscreen():
-	var is_full_screen = get_window().mode == Window.MODE_FULLSCREEN
 	if get_window().mode == Window.MODE_FULLSCREEN:
 		get_window().mode = Window.MODE_WINDOWED
 	else:
