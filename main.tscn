@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://chky6n2fgrls2"]
+[gd_scene load_steps=4 format=3 uid="uid://chky6n2fgrls2"]
 
 [ext_resource type="Script" path="res://scripts/FillScreen.gd" id="1_uwukn"]
 [ext_resource type="Script" path="res://scripts/LevelLoader.gd" id="2_v5j1a"]
+[ext_resource type="Script" path="res://scripts/WindowController.gd" id="3_4dahj"]
 
 [node name="main" type="Control"]
 layout_mode = 3
@@ -40,3 +41,6 @@ handle_input_locally = false
 size = Vector2i(320, 180)
 render_target_update_mode = 4
 script = ExtResource("2_v5j1a")
+
+[node name="WindowController" type="Node" parent="."]
+script = ExtResource("3_4dahj")
