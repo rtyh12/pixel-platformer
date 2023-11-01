@@ -25,17 +25,18 @@ position = Vector2(145, 47)
 position = Vector2(80, 152)
 
 [node name="Sprite2D" type="Sprite2D" parent="Player" node_paths=PackedStringArray("target_manual")]
+visible = false
 texture = ExtResource("3_dh265")
 script = ExtResource("3_qcxtl")
 target_manual = NodePath("../AnimatableBody2D")
+
+[node name="HairController" type="StaticBody2D" parent="Player"]
+script = ExtResource("6_l0ra3")
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="Player"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/AnimatableBody2D"]
 shape = SubResource("RectangleShape2D_4j8lr")
-
-[node name="HairController" type="Node" parent="Player/AnimatableBody2D"]
-script = ExtResource("6_l0ra3")
 
 [node name="PlayerController" type="Node" parent="Player" node_paths=PackedStringArray("physics_body")]
 script = ExtResource("5_7ar0q")
