@@ -9,7 +9,14 @@ func create_tail_attached_to(prev_attach_point, scales):
 		var rb = RigidBody2D.new()
 		rb.linear_damp = 20
 		rb.mass = 0.1
+		# Disable collision with other tail segments
+		rb.collision_layer = 1 << 1
 		tail_segment.add_child(rb)
+		
+		var collider = CollisionShape2D.new()
+		collider.shape = CircleShape2D.new()
+		collider.shape.radius = max(scales[i] / 2, 1)
+		rb.add_child(collider)
 
 		var sprite = Sprite2D.new()
 		sprite.texture = load("res://textures/100px diameter circle.png")
@@ -32,6 +39,6 @@ func create_tail_attached_to(prev_attach_point, scales):
 		tail_segment.add_child(spring)
 
 func _ready():
-	var scales = [8, 6, 6, 5, 4, 4, 4, 3, 2, 2]
+	var diameters = [8, 7, 6, 5, 5, 4, 2, 2, 1]
 	
-	create_tail_attached_to($"../AnimatableBody2D", scales)
+	create_tail_attached_to(self, diameters)
