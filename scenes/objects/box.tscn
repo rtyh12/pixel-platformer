@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://d32kwv355d4e4"]
+
+[ext_resource type="Texture2D" uid="uid://dlkf8ebhp7wfx" path="res://textures/box-placeholder.png" id="1_wgorw"]
+[ext_resource type="Script" path="res://scripts/SnapSprite.gd" id="2_pyfkp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2vd6x"]
+size = Vector2(16, 16)
+
+[node name="Box" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_wgorw")
+script = ExtResource("2_pyfkp")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+can_sleep = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("RectangleShape2D_2vd6x")
