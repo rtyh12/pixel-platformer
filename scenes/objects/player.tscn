@@ -18,6 +18,7 @@ script = ExtResource("2_lmej6")
 target_manual = NodePath("../AnimatableBody2D")
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+sync_to_physics = false
 
 [node name="HairController" type="StaticBody2D" parent="AnimatableBody2D"]
 position = Vector2(0, -16)
@@ -27,7 +28,8 @@ script = ExtResource("3_6vsdd")
 shape = SubResource("RectangleShape2D_4j8lr")
 disabled = true
 
-[node name="PlayerController" type="Node" parent="." node_paths=PackedStringArray("physics_body")]
+[node name="PlayerController" type="Node" parent="." node_paths=PackedStringArray("physics_body", "collision_shape")]
 script = ExtResource("4_2yypw")
 physics_body = NodePath("../AnimatableBody2D")
-speed = 1.0
+collision_shape = NodePath("../AnimatableBody2D/CollisionShape2D")
+run_speed = 100.0
