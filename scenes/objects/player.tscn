@@ -15,21 +15,20 @@ position = Vector2(80, 152)
 visible = false
 texture = ExtResource("1_og413")
 script = ExtResource("2_lmej6")
-target_manual = NodePath("../AnimatableBody2D")
+target_manual = NodePath("../CharacterBody2D")
 
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
-sync_to_physics = false
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 
-[node name="HairController" type="StaticBody2D" parent="AnimatableBody2D"]
+[node name="HairController" type="StaticBody2D" parent="CharacterBody2D"]
 position = Vector2(0, -16)
 script = ExtResource("3_6vsdd")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("RectangleShape2D_4j8lr")
 disabled = true
 
 [node name="PlayerController" type="Node" parent="." node_paths=PackedStringArray("physics_body", "collision_shape")]
 script = ExtResource("4_2yypw")
-physics_body = NodePath("../AnimatableBody2D")
-collision_shape = NodePath("../AnimatableBody2D/CollisionShape2D")
+physics_body = NodePath("../CharacterBody2D")
+collision_shape = NodePath("../CharacterBody2D/CollisionShape2D")
 run_speed = 100.0
