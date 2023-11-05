@@ -11,8 +11,8 @@ func create_tail_attached_to(prev_attach_point, scales):
 		rb.mass = 0.1
 		# Disable collision with other tail segments
 		# and the character body
-		rb.collision_layer = 1 << 1
-		rb.collision_mask = 1 << 1
+		rb.collision_layer = 2**2
+		rb.collision_mask = 2**0
 		tail_segment.add_child(rb)
 		
 		var collider = CollisionShape2D.new()
@@ -41,6 +41,6 @@ func create_tail_attached_to(prev_attach_point, scales):
 		tail_segment.add_child(spring)
 
 func _ready():
-	var diameters = [8, 7, 6, 5, 5, 4, 2, 2, 1]
+	var diameters = [8, 7, 6, 5, 4, 4, 2, 2]
 	
 	create_tail_attached_to(self, diameters)

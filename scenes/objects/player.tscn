@@ -18,8 +18,10 @@ script = ExtResource("2_lmej6")
 target_manual = NodePath("../CharacterBody2D")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+collision_layer = 2
 
 [node name="HairController" type="StaticBody2D" parent="CharacterBody2D"]
+position = Vector2(0, 6)
 script = ExtResource("3_6vsdd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
