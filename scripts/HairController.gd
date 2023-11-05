@@ -10,7 +10,9 @@ func create_tail_attached_to(prev_attach_point, scales):
 		rb.linear_damp = 20
 		rb.mass = 0.1
 		# Disable collision with other tail segments
+		# and the character body
 		rb.collision_layer = 1 << 1
+		rb.collision_mask = 1 << 1
 		tail_segment.add_child(rb)
 		
 		var collider = CollisionShape2D.new()
