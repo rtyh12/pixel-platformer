@@ -25,7 +25,6 @@ script = ExtResource("3_6vsdd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("RectangleShape2D_4j8lr")
-disabled = true
 
 [node name="PlayerController" type="Node" parent="." node_paths=PackedStringArray("cb", "collision_shape")]
 script = ExtResource("4_2yypw")

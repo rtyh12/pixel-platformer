@@ -12,12 +12,9 @@ func _physics_process(delta):
 	cb.velocity = Vector2.ZERO
 	
 	# Gravity
-#	speed_vertical -= -1 * delta
-	
-	cb.velocity.y += speed_vertical
+	cb.velocity.y += 20
 	
 	# Collisions
-#	print(cb.is_on_floor())
 	
 	# Input
 	if Input.is_action_pressed("ui_right"):
@@ -25,5 +22,5 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_left"):
 		cb.velocity.x -= run_speed
 		
-	print(cb.velocity)
-	cb.move_and_slide()	
+	print(cb.move_and_slide())
+	print(cb.is_on_floor())
