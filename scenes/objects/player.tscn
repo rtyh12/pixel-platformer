@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scripts/PlayerController.gd" id="4_2yypw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4j8lr"]
-size = Vector2(16, 16)
+size = Vector2(15.8, 15.8)
 
 [node name="Player" type="Node2D"]
 position = Vector2(80, 152)
@@ -25,6 +25,7 @@ script = ExtResource("3_6vsdd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("RectangleShape2D_4j8lr")
+one_way_collision_margin = 0.0
 
 [node name="PlayerController" type="Node" parent="." node_paths=PackedStringArray("cb", "collision_shape")]
 script = ExtResource("4_2yypw")
