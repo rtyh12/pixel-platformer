@@ -3,7 +3,12 @@ extends Node
 
 @export var cb: CharacterBody2D
 @export var collision_shape: CollisionShape2D
+@export var sprite: Sprite2D
+@export var hair_controller: HairController
 @export var run_speed: float
+
+enum Facing { LEFT, RIGHT }
+@onready var hair_controller_pos = hair_controller.position
 
 var can_jump = false
 var can_coyote = false
@@ -47,15 +52,17 @@ func _physics_process(delta):
 		speed_vertical += 5
 	else:
 		if t_since_jump < floaty_jump_time and still_holding_jump_after_jump:
-			speed_vertical += 5
+			speed_vertical += 4
 		else:
-			speed_vertical += 12
+			speed_vertical += 7
 
 	# Input
 	if Input.is_action_pressed("ui_right"):
 		cb.velocity.x += run_speed
+		_set_facing(Facing.RIGHT)
 	if Input.is_action_pressed("ui_left"):
 		cb.velocity.x -= run_speed
+		_set_facing(Facing.LEFT)
 	if Input.is_action_just_pressed("jump"):
 		t_since_jump_input = 0
 		if can_jump:
@@ -75,6 +82,14 @@ func _jump():
 	still_holding_jump_after_jump = true
 	speed_vertical = -270
 	can_coyote = false
+	
+func _set_facing(facing: Facing):
+	if facing == Facing.LEFT:
+		sprite.flip_h = true
+		hair_controller.position.x = -hair_controller_pos.x
+	else:
+		sprite.flip_h = false
+		hair_controller.position.x = hair_controller_pos.x
 
 func update_stopwatches(delta):
 	# TODO there HAS to be a better way ;_;

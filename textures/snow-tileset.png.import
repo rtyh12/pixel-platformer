@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://duocg2cb5dcma"
-path="res://.godot/imported/snow-tileset.png-d7b2426192295640bf21eb28cfe0a83f.ctex"
+path="res://.godot/imported/snow-tileset.png-f08f4913685ca89b10f2a0777f15417b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://projects/aseprite/snow-tileset.png"
-dest_files=["res://.godot/imported/snow-tileset.png-d7b2426192295640bf21eb28cfe0a83f.ctex"]
+source_file="res://textures/snow-tileset.png"
+dest_files=["res://.godot/imported/snow-tileset.png-f08f4913685ca89b10f2a0777f15417b.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-extends StaticBody2D
+class_name HairController extends StaticBody2D
 
 
 func create_tail_attached_to(prev_attach_point, scales):
@@ -26,11 +26,12 @@ func create_tail_attached_to(prev_attach_point, scales):
 		sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 		sprite.set_script(load("res://scripts/SnapSprite.gd"))
 		sprite.target_manual = rb
+		sprite.modulate = Color("b6cbcf")
 		tail_segment.add_child(sprite)
 		
 		var spring = DampedSpringJoint2D.new()
 		spring.length = 0
-		spring.rest_length = 1.4
+		spring.rest_length = 1
 		spring.stiffness = 1000
 		spring.damping = 1
 		
@@ -41,6 +42,6 @@ func create_tail_attached_to(prev_attach_point, scales):
 		tail_segment.add_child(spring)
 
 func _ready():
-	var diameters = [8, 7, 6, 5, 4, 4, 2, 2]
+	var diameters = [4, 4, 4, 4, 4, 4, 2, 2]
 	
 	create_tail_attached_to(self, diameters)

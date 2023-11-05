@@ -32,3 +32,5 @@ func _process(delta):
 	var interp = (1 - pif) * target_pos_prev + \
 		pif * target.position
 	position = Vector2i(interp.round()) + pos_offset
+	
+	print(target_pos_now)

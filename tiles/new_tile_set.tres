@@ -1,9 +1,9 @@
 [gd_resource type="TileSet" load_steps=3 format=3 uid="uid://cn817023t57j3"]
 
-[ext_resource type="Texture2D" uid="uid://duocg2cb5dcma" path="res://projects/aseprite/snow-tileset.png" id="1_1drve"]
+[ext_resource type="Texture2D" uid="uid://duocg2cb5dcma" path="res://textures/snow-tileset.png" id="1_vpi7a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lw8w6"]
-texture = ExtResource("1_1drve")
+texture = ExtResource("1_vpi7a")
 texture_region_size = Vector2i(8, 8)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)

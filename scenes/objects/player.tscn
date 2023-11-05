@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dyaf2h8emglqb"]
+[gd_scene load_steps=7 format=3 uid="uid://dyaf2h8emglqb"]
 
-[ext_resource type="Texture2D" uid="uid://tyc4g5f4s17h" path="res://textures/player-placeholder.png" id="1_og413"]
+[ext_resource type="Script" path="res://scenes/objects/PlayerSpritesContainer.gd" id="1_12ajm"]
+[ext_resource type="Texture2D" uid="uid://dpsdacqj2fwjp" path="res://textures/lizard.png" id="1_rw4yj"]
 [ext_resource type="Script" path="res://scripts/SnapSprite.gd" id="2_lmej6"]
 [ext_resource type="Script" path="res://scripts/HairController.gd" id="3_6vsdd"]
 [ext_resource type="Script" path="res://scripts/PlayerController.gd" id="4_2yypw"]
@@ -11,24 +12,29 @@ size = Vector2(15.8, 15.8)
 [node name="Player" type="Node2D"]
 position = Vector2(80, 152)
 
-[node name="Sprite2D" type="Sprite2D" parent="." node_paths=PackedStringArray("target_manual")]
-texture = ExtResource("1_og413")
-script = ExtResource("2_lmej6")
-target_manual = NodePath("../CharacterBody2D")
+[node name="SpriteContainer" type="Node2D" parent="." node_paths=PackedStringArray("character_body")]
+script = ExtResource("1_12ajm")
+snap_sprite = ExtResource("2_lmej6")
+character_body = NodePath("../CharacterBody2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="SpriteContainer"]
+texture = ExtResource("1_rw4yj")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 collision_layer = 2
 
 [node name="HairController" type="StaticBody2D" parent="CharacterBody2D"]
-position = Vector2(0, 6)
+position = Vector2(-1, 2)
 script = ExtResource("3_6vsdd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("RectangleShape2D_4j8lr")
 one_way_collision_margin = 0.0
 
-[node name="PlayerController" type="Node" parent="." node_paths=PackedStringArray("cb", "collision_shape")]
+[node name="PlayerController" type="Node" parent="." node_paths=PackedStringArray("cb", "collision_shape", "sprite", "hair_controller")]
 script = ExtResource("4_2yypw")
 cb = NodePath("../CharacterBody2D")
 collision_shape = NodePath("../CharacterBody2D/CollisionShape2D")
+sprite = NodePath("../SpriteContainer/Sprite2D")
+hair_controller = NodePath("../CharacterBody2D/HairController")
 run_speed = 100.0
