@@ -12,7 +12,6 @@ size = Vector2(16, 16)
 position = Vector2(80, 152)
 
 [node name="Sprite2D" type="Sprite2D" parent="." node_paths=PackedStringArray("target_manual")]
-visible = false
 texture = ExtResource("1_og413")
 script = ExtResource("2_lmej6")
 target_manual = NodePath("../CharacterBody2D")
