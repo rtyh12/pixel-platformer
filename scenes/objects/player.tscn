@@ -20,7 +20,6 @@ target_manual = NodePath("../CharacterBody2D")
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 
 [node name="HairController" type="StaticBody2D" parent="CharacterBody2D"]
-position = Vector2(0, -16)
 script = ExtResource("3_6vsdd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
