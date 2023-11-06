@@ -13,7 +13,7 @@ func load_from_file():
 		create_default_settings()
 	settings = new_settings
 
-	var player_name = settings.get_value("section1", "prop1")
+#	var player_name = settings.get_value("section1", "prop1")
 
 func _ready():
 	load_from_file()

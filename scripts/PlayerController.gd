@@ -3,7 +3,7 @@ extends Node
 
 @export var cb: CharacterBody2D
 @export var collision_shape: CollisionShape2D
-@export var sprite: Sprite2D
+@export var sprite_container: Node2D
 @export var hair_controller: HairController
 @export var run_speed: float
 
@@ -85,10 +85,10 @@ func _jump():
 	
 func _set_facing(facing: Facing):
 	if facing == Facing.LEFT:
-		sprite.flip_h = true
+		sprite_container.set_facing(Facing.LEFT)
 		hair_controller.position.x = -hair_controller_pos.x
 	else:
-		sprite.flip_h = false
+		sprite_container.set_facing(Facing.RIGHT)
 		hair_controller.position.x = hair_controller_pos.x
 
 func update_stopwatches(delta):

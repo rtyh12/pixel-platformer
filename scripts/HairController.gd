@@ -1,6 +1,9 @@
 class_name HairController extends StaticBody2D
 
 
+@export var snap_sprite: Resource
+@export var attachment_point: PhysicsBody2D
+
 func create_tail_attached_to(prev_attach_point, scales):
 	for i in range(len(scales)):
 		var tail_segment = Node2D.new()
@@ -25,7 +28,7 @@ func create_tail_attached_to(prev_attach_point, scales):
 		sprite.scale = Vector2.ONE * scales[i] / 100
 		sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 		sprite.set_script(load("res://scripts/SnapSprite.gd"))
-		sprite.target_manual = rb
+		sprite.target = rb
 		sprite.modulate = Color("b6cbcf")
 		tail_segment.add_child(sprite)
 		
@@ -44,4 +47,4 @@ func create_tail_attached_to(prev_attach_point, scales):
 func _ready():
 	var diameters = [4, 4, 4, 4, 4, 4, 2, 2]
 	
-	create_tail_attached_to(self, diameters)
+	create_tail_attached_to(attachment_point, diameters)
