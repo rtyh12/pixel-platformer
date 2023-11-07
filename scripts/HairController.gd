@@ -3,13 +3,15 @@ class_name HairController extends StaticBody2D
 
 @export var snap_sprite: Resource
 @export var attachment_point: PhysicsBody2D
+var _attachment_point_init_pos = Vector2(0, 3)
 
-func create_tail_attached_to(prev_attach_point, scales):
+func create_tail_attached_to(prev_attach_point, parent, scales):
 	for i in range(len(scales)):
 		var tail_segment = Node2D.new()
 		add_child(tail_segment)
 		
 		var rb = RigidBody2D.new()
+		rb.position = prev_attach_point.position
 		rb.linear_damp = 20
 		rb.mass = 0.1
 		# Disable collision with other tail segments
@@ -47,4 +49,14 @@ func create_tail_attached_to(prev_attach_point, scales):
 func _ready():
 	var diameters = [4, 4, 4, 4, 4, 4, 2, 2]
 	
-	create_tail_attached_to(attachment_point, diameters)
+	create_tail_attached_to(attachment_point, attachment_point, diameters)
+	attachment_point.position = _attachment_point_init_pos
+		
+func set_facing(facing: Values.Facing):
+	if facing == Values.Facing.LEFT:
+		attachment_point.position.x = -_attachment_point_init_pos.x
+	if facing == Values.Facing.RIGHT:
+		attachment_point.position.x = _attachment_point_init_pos.x
+		
+func _physics_process(delta):
+	print(attachment_point.position.x)

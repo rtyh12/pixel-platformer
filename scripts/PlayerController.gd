@@ -7,7 +7,6 @@ extends Node
 @export var hair_controller: HairController
 @export var run_speed: float
 
-enum Facing { LEFT, RIGHT }
 @onready var hair_controller_pos = hair_controller.position
 
 var can_jump = false
@@ -16,7 +15,8 @@ var still_holding_jump_after_jump = false
 var jump_buffered = false
 
 var speed_vertical = 0
-var floaty_jump_time = 0.4
+var terminal_vel = 500
+var floaty_jump_time = 0.35
 var coyote_time = 0.1
 var jump_buffer_time = 0.1
 
@@ -52,17 +52,18 @@ func _physics_process(delta):
 		speed_vertical += 5
 	else:
 		if t_since_jump < floaty_jump_time and still_holding_jump_after_jump:
-			speed_vertical += 4
+			speed_vertical += 2.5
 		else:
 			speed_vertical += 7
+			speed_vertical = min(speed_vertical, terminal_vel)
 
 	# Input
 	if Input.is_action_pressed("ui_right"):
 		cb.velocity.x += run_speed
-		_set_facing(Facing.RIGHT)
+		_set_facing(Values.Facing.RIGHT)
 	if Input.is_action_pressed("ui_left"):
 		cb.velocity.x -= run_speed
-		_set_facing(Facing.LEFT)
+		_set_facing(Values.Facing.LEFT)
 	if Input.is_action_just_pressed("jump"):
 		t_since_jump_input = 0
 		if can_jump:
@@ -80,16 +81,12 @@ func _physics_process(delta):
 func _jump():
 	t_since_jump = 0
 	still_holding_jump_after_jump = true
-	speed_vertical = -270
+	speed_vertical = -200
 	can_coyote = false
 	
-func _set_facing(facing: Facing):
-	if facing == Facing.LEFT:
-		sprite_container.set_facing(Facing.LEFT)
-		hair_controller.position.x = -hair_controller_pos.x
-	else:
-		sprite_container.set_facing(Facing.RIGHT)
-		hair_controller.position.x = hair_controller_pos.x
+func _set_facing(facing: Values.Facing):
+	sprite_container.set_facing(facing)
+	hair_controller.set_facing(facing)
 
 func update_stopwatches(delta):
 	# TODO there HAS to be a better way ;_;

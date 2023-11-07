@@ -1,8 +1,6 @@
 extends Node2D
 
 
-enum Facing { LEFT, RIGHT }
-
 @export var snap_sprite: Script
 @export var character_body: CharacterBody2D
 var sprites: Array[Node]
@@ -15,9 +13,9 @@ func _ready():
 		sprite.set_script(a)
 		sprite.setup(character_body)
 		
-func set_facing(facing: Facing):
+func set_facing(facing: Values.Facing):
 	for sprite in sprites:
-		if facing == Facing.LEFT:
+		if facing == Values.Facing.LEFT:
 			sprite.flip_h = true
-		if facing == Facing.RIGHT:
+		if facing == Values.Facing.RIGHT:
 			sprite.flip_h = false

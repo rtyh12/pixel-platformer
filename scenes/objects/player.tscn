@@ -21,7 +21,6 @@ character_body = NodePath("../CharacterBody2D")
 texture = ExtResource("1_rw4yj")
 
 [node name="HairController" type="StaticBody2D" parent="." node_paths=PackedStringArray("attachment_point")]
-position = Vector2(-1, 2)
 script = ExtResource("3_6vsdd")
 attachment_point = NodePath("../CharacterBody2D/HairAttachmentPoint")
 
@@ -33,7 +32,6 @@ shape = SubResource("RectangleShape2D_4j8lr")
 one_way_collision_margin = 0.0
 
 [node name="HairAttachmentPoint" type="StaticBody2D" parent="CharacterBody2D"]
-position = Vector2(-2, 3)
 
 [node name="PlayerController" type="Node" parent="." node_paths=PackedStringArray("cb", "collision_shape", "sprite_container", "hair_controller")]
 script = ExtResource("4_2yypw")
