@@ -3,7 +3,7 @@ class_name HairController extends StaticBody2D
 
 @export var snap_sprite: Resource
 @export var attachment_point: PhysicsBody2D
-var _attachment_point_init_pos = Vector2(0, 3)
+var _attachment_point_init_pos = Vector2(0, -2)
 
 func create_tail_attached_to(prev_attach_point, parent, scales):
 	for i in range(len(scales)):
@@ -18,6 +18,7 @@ func create_tail_attached_to(prev_attach_point, parent, scales):
 		# and the character body
 		rb.collision_layer = 2**2
 		rb.collision_mask = 2**0
+#		rb.position = Vector2(0, i)
 		tail_segment.add_child(rb)
 		
 		var collider = CollisionShape2D.new()
@@ -31,7 +32,7 @@ func create_tail_attached_to(prev_attach_point, parent, scales):
 		sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 		sprite.set_script(load("res://scripts/SnapSprite.gd"))
 		sprite.target = rb
-		sprite.modulate = Color("b6cbcf")
+		sprite.modulate = Color("1f1833")
 		tail_segment.add_child(sprite)
 		
 		var spring = DampedSpringJoint2D.new()
@@ -42,12 +43,13 @@ func create_tail_attached_to(prev_attach_point, parent, scales):
 		
 		spring.node_a = prev_attach_point.get_path()
 		spring.node_b = rb.get_path()
+#		spring.
 		prev_attach_point = rb
 		
 		tail_segment.add_child(spring)
 
 func _ready():
-	var diameters = [4, 4, 4, 4, 4, 4, 2, 2]
+	var diameters = [4, 5, 4, 4, 4, 4, 3, 3, 3, 3, 3]
 	
 	create_tail_attached_to(attachment_point, attachment_point, diameters)
 	attachment_point.position = _attachment_point_init_pos
@@ -57,6 +59,3 @@ func set_facing(facing: Values.Facing):
 		attachment_point.position.x = -_attachment_point_init_pos.x
 	if facing == Values.Facing.RIGHT:
 		attachment_point.position.x = _attachment_point_init_pos.x
-		
-func _physics_process(delta):
-	print(attachment_point.position.x)

@@ -1,13 +1,66 @@
-[gd_scene load_steps=7 format=3 uid="uid://dyaf2h8emglqb"]
+[gd_scene load_steps=20 format=3 uid="uid://dyaf2h8emglqb"]
 
 [ext_resource type="Script" path="res://scenes/objects/PlayerSpritesContainer.gd" id="1_12ajm"]
 [ext_resource type="Texture2D" uid="uid://dpsdacqj2fwjp" path="res://textures/lizard.png" id="1_rw4yj"]
 [ext_resource type="Script" path="res://scripts/SnapSprite.gd" id="2_lmej6"]
 [ext_resource type="Script" path="res://scripts/HairController.gd" id="3_6vsdd"]
 [ext_resource type="Script" path="res://scripts/PlayerController.gd" id="4_2yypw"]
+[ext_resource type="Script" path="res://scenes/objects/SwordAttack.gd" id="6_ad2ho"]
+[ext_resource type="Texture2D" uid="uid://c75t2nboxpql8" path="res://textures/sword.png" id="7_ya0wd"]
+[ext_resource type="Script" path="res://scenes/objects/PlayerAudioPlayer.gd" id="8_rr7bc"]
+[ext_resource type="AudioStream" uid="uid://dc1yo0d0t74ob" path="res://audio/sword/sword 4-sword-swipes-7174.wav" id="9_ujtge"]
+[ext_resource type="AudioStream" uid="uid://dwbgi632ymemd" path="res://audio/sword/sword 5-sword-swipes-7174.wav" id="10_df0q2"]
+[ext_resource type="AudioStream" uid="uid://deg32yd13fjhd" path="res://audio/sword/sword 6-sword-swipes-7174.wav" id="11_x81qj"]
+[ext_resource type="AudioStream" uid="uid://bjeev2lf3ni8y" path="res://audio/sword/sword 7-sword-swipes-7174.wav" id="12_ehbsd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ew67e"]
+atlas = ExtResource("7_ya0wd")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4dege"]
+atlas = ExtResource("7_ya0wd")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tncxh"]
+atlas = ExtResource("7_ya0wd")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tj0ki"]
+atlas = ExtResource("7_ya0wd")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_400md"]
+atlas = ExtResource("7_ya0wd")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oo2g0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ew67e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4dege")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tncxh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tj0ki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_400md")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"new_animation",
+"speed": 15.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4j8lr"]
-size = Vector2(15.8, 15.8)
+size = Vector2(12, 15.9)
 
 [node name="Player" type="Node2D"]
 position = Vector2(80, 152)
@@ -17,21 +70,29 @@ script = ExtResource("1_12ajm")
 snap_sprite = ExtResource("2_lmej6")
 character_body = NodePath("../CharacterBody2D")
 
-[node name="Sprite2D" type="Sprite2D" parent="SpriteContainer"]
+[node name="Sword" type="AnimatedSprite2D" parent="SpriteContainer"]
+sprite_frames = SubResource("SpriteFrames_oo2g0")
+animation = &"new_animation"
+frame = 5
+frame_progress = 1.0
+
+[node name="Body" type="Sprite2D" parent="SpriteContainer"]
 texture = ExtResource("1_rw4yj")
 
-[node name="HairController" type="StaticBody2D" parent="." node_paths=PackedStringArray("attachment_point")]
-script = ExtResource("3_6vsdd")
-attachment_point = NodePath("../CharacterBody2D/HairAttachmentPoint")
+[node name="Camera2D" type="Camera2D" parent="SpriteContainer/Body"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0, 0.0500031)
 shape = SubResource("RectangleShape2D_4j8lr")
 one_way_collision_margin = 0.0
 
 [node name="HairAttachmentPoint" type="StaticBody2D" parent="CharacterBody2D"]
+
+[node name="AudioListener2D" type="AudioListener2D" parent="CharacterBody2D"]
+current = true
 
 [node name="PlayerController" type="Node" parent="." node_paths=PackedStringArray("cb", "collision_shape", "sprite_container", "hair_controller")]
 script = ExtResource("4_2yypw")
@@ -40,3 +101,17 @@ collision_shape = NodePath("../CharacterBody2D/CollisionShape2D")
 sprite_container = NodePath("../SpriteContainer")
 hair_controller = NodePath("../HairController")
 run_speed = 100.0
+
+[node name="HairController" type="StaticBody2D" parent="." node_paths=PackedStringArray("attachment_point")]
+script = ExtResource("3_6vsdd")
+attachment_point = NodePath("../CharacterBody2D/HairAttachmentPoint")
+
+[node name="Attack" type="Node2D" parent="." node_paths=PackedStringArray("animatedSprite", "characterBody", "playerController")]
+script = ExtResource("6_ad2ho")
+animatedSprite = NodePath("../SpriteContainer/Sword")
+characterBody = NodePath("../CharacterBody2D")
+playerController = NodePath("../PlayerController")
+
+[node name="AudioPlayer" type="Node" parent="."]
+script = ExtResource("8_rr7bc")
+streams = Array[AudioStream]([ExtResource("9_ujtge"), ExtResource("10_df0q2"), ExtResource("11_x81qj"), ExtResource("12_ehbsd")])

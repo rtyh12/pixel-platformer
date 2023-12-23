@@ -1,10 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://ehoo8k687eur"]
+[gd_scene load_steps=4 format=3 uid="uid://ehoo8k687eur"]
 
+[ext_resource type="Texture2D" uid="uid://bxlx5h2y7jqq0" path="res://textures/fans.png" id="1_1n0t2"]
 [ext_resource type="TileSet" uid="uid://cn817023t57j3" path="res://tiles/new_tile_set.tres" id="1_ycfgg"]
 [ext_resource type="PackedScene" uid="uid://dyaf2h8emglqb" path="res://scenes/objects/player.tscn" id="3_5vv0f"]
 
 [node name="level1" type="Node2D"]
 position = Vector2(16, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.403922, 0.588235, 0.6, 1)
+position = Vector2(144, 90)
+texture = ExtResource("1_1n0t2")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_ycfgg")

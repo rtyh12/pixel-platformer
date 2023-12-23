@@ -1,4 +1,4 @@
-extends Sprite2D
+extends Node2D
 
 
 @export var target: Node2D
@@ -14,17 +14,17 @@ var target_rot_now: float
 func _ready():
 	pos_offset = position - target.position
 	rot_offset = rotation - target.rotation
-		
+
 func setup(target_: Node2D):
 	target = target_
 	_ready()
 	set_process(true)
 	set_physics_process(true)
-	
+
 func _physics_process(_delta):
 	target_pos_prev = target_pos_now
 	target_pos_now = target.position
-	
+
 	target_rot_prev = target_rot_now
 	target_rot_now = target.rotation
 

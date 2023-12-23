@@ -12,7 +12,7 @@ func _ready():
 		var a = load("res://scripts/SnapSprite.gd")
 		sprite.set_script(a)
 		sprite.setup(character_body)
-		
+
 func set_facing(facing: Values.Facing):
 	for sprite in sprites:
 		if facing == Values.Facing.LEFT:
