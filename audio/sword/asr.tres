@@ -1,0 +1,19 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=5 format=3 uid="uid://xpu6e3kexspe"]
+
+[ext_resource type="AudioStream" uid="uid://dc1yo0d0t74ob" path="res://audio/sword/sword 4-sword-swipes-7174.wav" id="1_016gi"]
+[ext_resource type="AudioStream" uid="uid://dwbgi632ymemd" path="res://audio/sword/sword 5-sword-swipes-7174.wav" id="2_j80s3"]
+[ext_resource type="AudioStream" uid="uid://deg32yd13fjhd" path="res://audio/sword/sword 6-sword-swipes-7174.wav" id="3_f144r"]
+[ext_resource type="AudioStream" uid="uid://bjeev2lf3ni8y" path="res://audio/sword/sword 7-sword-swipes-7174.wav" id="4_xboba"]
+
+[resource]
+random_pitch = 1.65
+random_volume_offset_db = 0.96
+streams_count = 4
+stream_0/stream = ExtResource("1_016gi")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_j80s3")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_f144r")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("4_xboba")
+stream_3/weight = 1.0

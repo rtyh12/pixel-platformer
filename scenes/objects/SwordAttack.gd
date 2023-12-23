@@ -8,7 +8,7 @@ signal did_sword_attack
 @export var playerController: Node
 
 var can_attack = true
-var cooldown = 1.5
+var cooldown = 0.5
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack"):
