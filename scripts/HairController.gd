@@ -32,7 +32,7 @@ func create_tail_attached_to(prev_attach_point, parent, scales):
 		sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 		sprite.set_script(load("res://scripts/SnapSprite.gd"))
 		sprite.target = rb
-		sprite.modulate = Color("1f1833")
+		sprite.modulate = Color("#b6cbcf")
 		tail_segment.add_child(sprite)
 		
 		var spring = DampedSpringJoint2D.new()

@@ -87,4 +87,4 @@ common/physics_ticks_per_second=120
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-environment/defaults/default_clear_color=Color(0.266667, 0.301961, 0.317647, 1)
+environment/defaults/default_clear_color=Color(0.0705882, 0.0745098, 0.121569, 1)
